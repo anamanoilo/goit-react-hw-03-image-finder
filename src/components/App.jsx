@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import Searchbar from './Searchbar';
-import Modal from './Modal';
+// import Modal from './Modal';
 import Main from './Main/Main';
 
 class App extends Component {
