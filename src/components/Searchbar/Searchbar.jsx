@@ -1,18 +1,22 @@
 import { Component } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
+import PropTypes from 'prop-types';
 
 class Searchbar extends Component {
   state = {
     query: '',
   };
 
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
   inputHandler = e => {
     this.setState(prev => ({ ...prev, query: e.target.value }));
   };
 
   submitHandler = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state.query);
+    this.props.onSubmit(this.state.query.trim());
   };
 
   render() {
@@ -22,7 +26,6 @@ class Searchbar extends Component {
       <header className="Searchbar">
         <form className="SearchForm" onSubmit={submitHandler}>
           <button type="submit" className="SearchForm-button">
-            {/* <span className="SearchForm-button-label"></span> */}
             <AiOutlineSearch />
           </button>
 

@@ -6,6 +6,7 @@ class ApiService {
   static #API_KEY = '25741078-4fc96325b71ca39b2d0ebb27c';
   page = 1;
   query = '';
+  totalPages = 12;
 
   async fetchPhotos() {
     const queryParams = new URLSearchParams({
@@ -14,7 +15,7 @@ class ApiService {
       image_type: 'photo',
       orientation: 'horizontal',
       page: this.page,
-      per_page: 12,
+      per_page: this.totalPages,
     });
     const response = await axios.get(`?${queryParams}`);
     return response.data;

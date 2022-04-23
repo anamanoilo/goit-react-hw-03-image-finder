@@ -1,6 +1,12 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Modal extends Component {
+  static propTypes = {
+    closeModal: PropTypes.func.isRequired,
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  };
   closeModalByEsc = e => {
     if (e.code === 'Escape') {
       this.props.closeModal();
@@ -18,11 +24,11 @@ class Modal extends Component {
     window.addEventListener('keydown', this.closeModalByEsc);
   }
   render() {
-    const { url, title } = this.props;
+    const { src, alt, closeModal } = this.props;
     return (
-      <div className="Overlay">
+      <div className="Overlay" onClick={closeModal}>
         <div className="Modal">
-          <img src={url} alt={title} />
+          <img src={src} alt={alt} />
         </div>
       </div>
     );
